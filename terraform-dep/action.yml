@@ -1,0 +1,20 @@
+name: 'Terraform Dependency Finder'
+description: ''
+inputs:
+  path-to-terraform:  # id of input
+    description: 'Path to folder including all the terraform modules'
+    required: true
+  modules-ignore:  # id of input
+    description: 'Space separated terraform modules names to be excluded from the results'
+    required: true
+    default: ''
+outputs:
+  all-modules: # id of output
+    description: 'Sequential order to run terraform modules'
+  dependency-chart: # id of output
+    description: 'a json object with all modules and its dependencies'
+  run-order:
+    description: 'a list of lists where each list element sequentially describes modules that can be run in parallel.'
+runs:
+  using: 'node12'
+  main: 'index.js'
